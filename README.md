@@ -7,13 +7,6 @@ A fully responsive and modern portfolio website to showcase my development skill
 
 ---
 
-## 📸 Website Preview
-
-![Portfolio Preview](https://vijaywebsite.netlify.app/assets/preview.png)
-> *(Add your own screenshot path above or remove this section)*
-
----
-
 ## 🚀 Features
 
 - 🎥 **Project Showcase with Video Demos**
