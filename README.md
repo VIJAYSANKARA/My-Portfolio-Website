@@ -25,10 +25,3 @@ A fully responsive and modern portfolio website to showcase my development skill
 - **Netlify** – Hosting
 
 ---
-
-## 📂 Getting Started
-
-```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
-# If it's static, open index.html in browser
