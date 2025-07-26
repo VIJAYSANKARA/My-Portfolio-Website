@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Responsive Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom CSS for a smooth scroll effect and button hover effects */
+        html {
+            scroll-behavior: smooth;
+        }
+        .nav-link:hover {
+            color: #6366f1; /* Indigo-500 */
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .project-card:hover, .internship-card:hover, .certification-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        /* Styles for the form message */
+        .form-message-success {
+            color: #10B981; /* Green-500 */
+        }
+        .form-message-error {
+            color: #EF4444; /* Red-500 */
+        }
+        /* Custom style for the select dropdown arrow */
+        .select-arrow {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: #ffffff; /* White arrow */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-sm p-4 sticky top-0 z-50 rounded-b-lg">
+        <nav class="container mx-auto flex justify-between items-center px-4">
+            <a href="#home" class="text-2xl font-bold text-indigo-600 rounded-md">MyPortfolio</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="text-lg font-medium text-gray-700 hover:text-indigo-600 transition-colors nav-link">Home</a>
+                <a href="#about" class="text-lg font-medium text-gray-700 hover:text-indigo-600 transition-colors nav-link">About</a>
+                <a href="#education" class="text-lg font-medium text-gray-700 hover:text-indigo-600 transition-colors nav-link">Education</a>
+                <a href="#internships" class="text-lg font-medium text-gray-700 hover:text-indigo-600 transition-colors nav-link">Internships</a> <!-- New link -->
+                <a href="#certifications" class="text-lg font-medium text-gray-700 hover:text-indigo-600 transition-colors nav-link">Certifications</a> <!-- New link -->
+                <a href="#skills" class="text-lg font-medium text-gray-700 hover:text-indigo-600 transition-colors nav-link">Skills</a>
+                <a href="#projects" class="text-lg font-medium text-gray-700 hover:text-indigo-600 transition-colors nav-link">Projects</a>
+                <a href="#contact" class="text-lg font-medium text-gray-700 hover:text-indigo-600 transition-colors nav-link">Contact</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 hover:text-indigo-600 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white z-40 p-6 flex flex-col space-y-4 shadow-lg rounded-lg">
+            <button id="close-menu-button" class="self-end text-gray-700 hover:text-indigo-600 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <a href="#home" class="text-xl font-medium text-gray-700 hover:text-indigo-600 transition-colors py-2 rounded-md nav-link" onclick="closeMobileMenu()">Home</a>
+            <a href="#about" class="text-xl font-medium text-gray-700 hover:text-indigo-600 transition-colors py-2 rounded-md nav-link" onclick="closeMobileMenu()">About</a>
+            <a href="#education" class="text-xl font-medium text-gray-700 hover:text-indigo-600 transition-colors py-2 rounded-md nav-link" onclick="closeMobileMenu()">Education</a>
+            <a href="#internships" class="text-xl font-medium text-gray-700 hover:text-indigo-600 transition-colors py-2 rounded-md nav-link" onclick="closeMobileMenu()">Internships</a> <!-- New link -->
+            <a href="#certifications" class="text-xl font-medium text-gray-700 hover:text-indigo-600 transition-colors py-2 rounded-md nav-link" onclick="closeMobileMenu()">Certifications</a> <!-- New link -->
+            <a href="#skills" class="text-xl font-medium text-gray-700 hover:text-indigo-600 transition-colors py-2 rounded-md nav-link" onclick="closeMobileMenu()">Skills</a>
+            <a href="#projects" class="text-xl font-medium text-gray-700 hover:text-indigo-600 transition-colors py-2 rounded-md nav-link" onclick="closeMobileMenu()">Projects</a>
+            <a href="#contact" class="text-xl font-medium text-gray-700 hover:text-indigo-600 transition-colors py-2 rounded-md nav-link" onclick="closeMobileMenu()">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="relative h-screen flex items-center justify-center text-center bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-lg m-4 p-8">
+            <div class="z-10">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-down">
+                    Hello, I'm <span class="text-yellow-300">Vijay.S</span>
+                </h1>
+                <p class="text-lg sm:text-xl md:text-2xl font-light mb-8 animate-fade-in-up">
+                    A passionate Web Developer and Java Developer with great knowledge in java and web development tools.
+                </p>
+                <a href="#projects" class="inline-block bg-white text-indigo-700 font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition duration-300 btn-primary animate-fade-in-up">
+                    View My Work
+                </a>
+            </div>
+            <!-- Simple background pattern -->
+            <div class="absolute inset-0 z-0 opacity-10">
+                <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <circle cx="20" cy="20" r="15" fill="currentColor" />
+                    <circle cx="80" cy="30" r="10" fill="currentColor" />
+                    <circle cx="40" cy="70" r="12" fill="currentColor" />
+                    <circle cx="90" cy="80" r="8" fill="currentColor" />
+                </svg>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 bg-white rounded-lg m-4 p-8 shadow-md">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">About Me</h2>
+                <div class="flex flex-col md:flex-row items-center md:space-x-12">
+                    <div class="md:w-1/3 mb-8 md:mb-0">
+                        <img src="Vijay Pink Dress.jpg" onerror="this.onerror=null;this.src='Vijay Pink Dress.jpg';" alt="Profile Picture" class="rounded-full w-48 h-48 md:w-64 md:h-64 mx-auto object-cover border-4 border-indigo-200 shadow-xl">
+                    </div>
+                    <div class="md:w-2/3 text-lg text-gray-700 leading-relaxed">
+                        <p class="mb-4">
+                            Aspiring web developer and java developer with foundational knowledge in Java and web technologies, seeking to contribute to impactful product development. Eager to apply problem-solving skills and continuously learn in a challenging environment.
+                        </p>
+                        <!-- New Resume Download Button -->
+                        <a href="Final Resume.pdf" download="Vijay_S_Resume.pdf" class="inline-flex items-center bg-indigo-600 text-white font-semibold py-3 px-6 rounded-md shadow-md hover:bg-indigo-700 transition duration-300 mt-4">
+                            Download Resume
+                            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H5a2 2 0 01-2-2V6a2 2 0 012-2h7l2 2h4a2 2 0 012 2v7a2 2 0 01-2 2z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="py-16 bg-gray-100 rounded-lg m-4 p-8 shadow-md">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">My Education</h2>
+                <div class="grid grid-cols-1 md:grid-cols-1 gap-8 max-w-2xl mx-auto">
+                    <!-- Education Entry 1 -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">BE - CSE</h3>
+                        <p class="text-indigo-600 text-lg mb-2">2022 - 2026</p>
+                        <p class="text-gray-700 text-base mb-2">Panimalar Engineering College</p>
+                        <p class="text-gray-700 text-base">CGPA: 7.72 / 10 (Upto 3rd year)</p>
+                    </div>
+                    <!-- Education Entry 2 (Example, you can replace with real data) -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">HSC</h3>
+                        <p class="text-indigo-600 text-lg mb-2">2020 - 2022</p>
+                        <p class="text-gray-700 text-base mb-2">Everwin Vidhyashram Sr. Secondary School</p>
+                        <p class="text-gray-700 text-base">Percentage: 66.4%</p>
+                    </div>
+                    <!-- Education Entry 3 (Example, you can replace with real data) -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">SSLC</h3>
+                        <p class="text-indigo-600 text-lg mb-2">2008 - 2020</p>
+                        <p class="text-gray-700 text-base mb-2">Smt. Durgadevi Choudhary Vivekananda Vidhyalaya</p>
+                        <p class="text-gray-700 text-base">Percentage: 65.5%</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Internships Section -->
+        <section id="internships" class="py-16 bg-gray-100 rounded-lg m-4 p-8 shadow-md">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">My Internships</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+                    <!-- Internship 1: InternPe (Web Development) -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 transition duration-300 internship-card">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Web Development Intern</h3>
+                        <p class="text-indigo-600 text-lg mb-2">InternPe</p>
+                        <p class="text-gray-700 text-base mb-4">December 2023 - Jan 2024</p>
+                        <p class="text-gray-800 font-semibold mb-2">Skills Gained:</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-sm font-medium px-2.5 py-0.5 rounded-full">HTML</span>
+                            <span class="bg-green-100 text-green-800 text-sm font-medium px-2.5 py-0.5 rounded-full">CSS</span>
+                            <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">JavaScript</span>
+                        </div>
+                        <div class="flex justify-end mt-4">
+                            <a href="https://www.linkedin.com/posts/vijay-sankaranarayanan-524330256_i-am-extremely-delighted-to-inform-that-i-activity-7152944865809469441-wz0L?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD8NeewBT2oUfoQ9TjK6F3ggY6JvcoONrSs" 
+                            target="_blank" class="inline-flex items-center bg-indigo-600 text-white font-semibold py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 transition duration-300">
+                                Verify
+                                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Internship 2: InternPe (Python Programming) -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 transition duration-300 internship-card">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Python Programming Intern</h3>
+                        <p class="text-indigo-600 text-lg mb-2">InternPe</p>
+                        <p class="text-gray-700 text-base mb-4">June 2024 - July 2024</p>
+                        <p class="text-gray-800 font-semibold mb-2">Skills Gained:</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-sm font-medium px-2.5 py-0.5 rounded-full">Python</span>
+                            <span class="bg-green-100 text-green-800 text-sm font-medium px-2.5 py-0.5 rounded-full">Random Modules</span>
+                        </div>
+                        <div class="flex justify-end mt-4">
+                            <a href="https://www.linkedin.com/posts/vijay-sankaranarayanan-524330256_internpeinternship-pythoninternship-activity-7220727524262080512-1xY2?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD8NeewBT2oUfoQ9TjK6F3ggY6JvcoONrSs" 
+                            target="_blank" class="inline-flex items-center bg-indigo-600 text-white font-semibold py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 transition duration-300">
+                                Verify
+                                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Internship 3: Octanet Services (Web Development) -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 transition duration-300 internship-card">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Web Development Intern</h3>
+                        <p class="text-indigo-600 text-lg mb-2">Octanet Services</p>
+                        <p class="text-gray-700 text-base mb-4">June 2024 - July 2024</p>
+                        <p class="text-gray-800 font-semibold mb-2">Skills Gained:</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-sm font-medium px-2.5 py-0.5 rounded-full">HTML</span>
+                            <span class="bg-green-100 text-green-800 text-sm font-medium px-2.5 py-0.5 rounded-full">CSS</span>
+                            <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">JavaScript</span>
+                        </div>
+                        <div class="flex justify-end mt-4">
+                            <a href="https://www.linkedin.com/posts/vijay-sankaranarayanan-524330256_octanet-internship-certificate-activity-7220729553697038336-QgbX?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD8NeewBT2oUfoQ9TjK6F3ggY6JvcoONrSs" 
+                            target="_blank" class="inline-flex items-center bg-indigo-600 text-white font-semibold py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 transition duration-300">
+                                Verify
+                                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="py-16 bg-white rounded-lg m-4 p-8 shadow-md">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">My Certifications</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+                    <!-- Certification 1 -->
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-md border border-gray-200 transition duration-300 certification-card">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Programming in Java </h3>
+                        <p class="text-indigo-600 text-lg mb-2">Issued by NPTEL (12 Weeks) Course</p>
+                        <p class="text-gray-700 text-base mb-4">Issued: May 2024</p><br>
+                        <div class="flex justify-end mt-4">
+                            <a href="https://www.linkedin.com/posts/vijay-sankaranarayanan-524330256_nptel-swayam-onlinecertification-activity-7268536352122515456-oXd2?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD8NeewBT2oUfoQ9TjK6F3ggY6JvcoONrSs" target="_blank" class="inline-flex items-center bg-indigo-600 text-white font-semibold py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 transition duration-300">
+                                Verify
+                                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Certification 2 -->
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-md border border-gray-200 transition duration-300 certification-card">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Software Testing</h3>
+                        <p class="text-indigo-600 text-lg mb-2">Issued by NPTEL (12 Weeks) Course</p>
+                        <p class="text-gray-700 text-base mb-4">Issued: November 2024</p><br>
+                        <div class="flex justify-end mt-4">
+                            <a href="https://www.linkedin.com/posts/vijay-sankaranarayanan-524330256_nptel-swayam-onlinecertification-activity-7268536352122515456-oXd2?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD8NeewBT2oUfoQ9TjK6F3ggY6JvcoONrSs" target="_blank" class="inline-flex items-center bg-indigo-600 text-white font-semibold py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 transition duration-300">
+                                Verify
+                                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Certification 3 -->
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-md border border-gray-200 transition duration-300 certification-card">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Introduction to Python</h3>
+                        <p class="text-indigo-600 text-lg mb-2">Issued by Infosys SpringBoard Course</p>
+                        <p class="text-gray-700 text-base mb-4">Issued: May 2025</p><br>
+                        <div class="flex justify-end mt-4">
+                            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7324699639700430849/" target="_blank" class="inline-flex items-center bg-indigo-600 text-white font-semibold py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 transition duration-300">
+                                Verify
+                                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Certification 4 -->
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-md border border-gray-200 transition duration-300 certification-card">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">UiPath Automation Developer</h3>
+                        <p class="text-indigo-600 text-lg mb-2">Issued by NAASCOM</p>
+                        <p class="text-gray-700 text-base mb-4">Issued: April 2025</p><br>
+                        <div class="flex justify-end mt-4">
+                            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7320977743519645696/" target="_blank" class="inline-flex items-center bg-indigo-600 text-white font-semibold py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 transition duration-300">
+                                Verify
+                                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Certification 5 -->
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-md border border-gray-200 transition duration-300 certification-card">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Responsive Web Design Essentials</h3>
+                        <p class="text-indigo-600 text-lg mb-2">Issued by Udemy</p>
+                        <p class="text-gray-700 text-base mb-4">Issued: Feb 2025</p><br>
+                        <div class="flex justify-end mt-4">
+                            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7299418872346984448/" target="_blank" class="inline-flex items-center bg-indigo-600 text-white font-semibold py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 transition duration-300">
+                                Verify
+                                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Certification 6 -->
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-md border border-gray-200 transition duration-300 certification-card">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">UiPath Automation Developer</h3>
+                        <p class="text-indigo-600 text-lg mb-2">Issued by UiPath</p>
+                        <p class="text-gray-700 text-base mb-4">Issued: May 2025</p><br>
+                        <div class="flex justify-end mt-4">
+                            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7334234028721537024/" target="_blank" class="inline-flex items-center bg-indigo-600 text-white font-semibold py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 transition duration-300">
+                                Verify
+                                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-16 bg-gray-100 rounded-lg m-4 p-8 shadow-md">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">My Skills</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 justify-items-center">
+                    <!-- Programming Languages -->
+                    <div class="bg-white p-8 rounded-xl shadow-md text-center border border-gray-200 transition duration-300 hover:shadow-lg hover:border-indigo-300">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java Icon" class="w-20 h-20 mx-auto mb-4 rounded-full p-2 bg-indigo-50">
+                        <h3 class="text-4xl font-semibold text-gray-800">Java</h3>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-md text-center border border-gray-200 transition duration-300 hover:shadow-lg hover:border-indigo-300">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python Icon" class="w-20 h-20 mx-auto mb-4 rounded-full p-2 bg-indigo-50">
+                        <h3 class="text-4xl font-semibold text-gray-800">Python</h3>
+                    </div>
+                    <!-- Web Technologies -->
+                    <div class="bg-white p-8 rounded-xl shadow-md text-center border border-gray-200 transition duration-300 hover:shadow-lg hover:border-indigo-300">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML Icon" class="w-20 h-20 mx-auto mb-4 rounded-full p-2 bg-indigo-50">
+                        <h3 class="text-4xl font-semibold text-gray-800">HTML</h3>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-md text-center border border-gray-200 transition duration-300 hover:shadow-lg hover:border-indigo-300">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS Icon" class="w-20 h-20 mx-auto mb-4 rounded-full p-2 bg-indigo-50">
+                        <h3 class="text-4xl font-semibold text-gray-800">CSS</h3>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-md text-center border border-gray-200 transition duration-300 hover:shadow-lg hover:border-indigo-300">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript Icon" class="w-20 h-20 mx-auto mb-4 rounded-full p-2 bg-indigo-50">
+                        <h3 class="text-2xl font-semibold text-gray-800">JavaScript</h3>
+                    </div>
+                    <!-- Database Systems -->
+                    <div class="bg-white p-8 rounded-xl shadow-md text-center border border-gray-200 transition duration-300 hover:shadow-lg hover:border-indigo-300">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL Icon" class="w-20 h-20 mx-auto mb-4 rounded-full p-2 bg-indigo-50">
+                        <h3 class="text-3xl font-semibold text-gray-800">MySQL</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-16 bg-white rounded-lg m-4 p-8 shadow-md">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">My Projects</h2>
+
+                <!-- Dropdown for filtering projects - STYLISH VERSION -->
+                <div class="flex justify-center mb-8">
+                    <div class="relative inline-block w-64">
+                        <select id="tool-filter" class="block appearance-none w-full bg-indigo-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-300">
+                            <option value="all" class="bg-indigo-700">Show All Tools</option>
+                            <option value="HTML" class="bg-indigo-700">HTML</option>
+                            <option value="CSS" class="bg-indigo-700">CSS</option>
+                            <option value="JavaScript" class="bg-indigo-700">JavaScript</option>
+                            <option value="Python" class="bg-indigo-700">Python</option>
+                            <option value="Bootstrap" class="bg-indigo-700">Bootstrap</option>
+                            <option value="Git" class="bg-indigo-700">Git</option>
+                            <option value="SQL" class="bg-indigo-700">SQL</option>
+                            <option value="UiPath Studio" class="bg-indigo-700">UiPath Studio</option>
+                            <option value="Automation Tools" class="bg-indigo-700">Automation Tools</option>
+                            <option value="API's" class="bg-indigo-700">API's</option>
+                            <option value="Tkinter" class="bg-indigo-700">Tkinter</option>
+                            <option value="Time Module" class="bg-indigo-700">Time Module</option>
+                            <option value="Random" class="bg-indigo-700">Random</option>
+                            <option value="Google Fonts" class="bg-indigo-700">Google Fonts</option>
+                            <option value="Font Awesome" class="bg-indigo-700">Font Awesome</option>
+                        </select>
+                        <div class="select-arrow">
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Card 1: Innovative Food Recommendation System -->
+                    <div class="bg-gray-50 rounded-xl shadow-lg overflow-hidden border border-gray-200 transition duration-300 project-card" data-tools="HTML,CSS,JavaScript,Python,Bootstrap,Git,SQL">
+                        <img src="Picture1.png" alt="Food Recommendation System Thumbnail" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Innovative Food Recommendation System using Advanced Clustering Techniques</h3>
+                            <p class="text-gray-700 mb-4">
+                                Developed a recommendation system for easy user accessibility. <br>
+                                Implemented Machine Learning for food recommendation, achieving a food recommendation webpage. <br>
+                                Used clustering algorithms to analyze food ingredients and generate personalized recommendations. <br>
+                                Preprocessed ingredient data for meaningful feature extraction and clustering efficiency. <br>
+                                Designed the system architecture for scalability and future integration with user login and feedback mechanisms.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded-full">HTML</span>
+                                <span class="bg-green-100 text-green-800 text-sm font-medium px-2.5 py-0.5 rounded-full">CSS</span>
+                                <span class="bg-purple-100 text-purple-800 text-sm font-medium px-2.5 py-0.5 rounded-full">JAVASCRIPT</span>
+                                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">PYTHON</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-2.5 py-0.5 rounded-full">BOOTSTRAP</span>
+                                <span class="bg-pink-100 text-pink-800 text-sm font-medium px-2.5 py-0.5 rounded-full">GIT</span>
+                                <span class="bg-gray-100 text-gray-800 text-sm font-medium px-2.5 py-0.5 rounded-full">SQL</span>
+                            </div>
+                            <div class="flex justify-end space-x-4">
+                                <!-- If you upload a video to YouTube or another platform, replace the '#' with the video URL -->
+                                <a href="Mini Project Implementation Video.mp4" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                                    Watch Demo Video
+                                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                </a>
+                                <a href="https://github.com/VIJAYSANKARA/Innovative-Food-Recommendation-System-using-Advanced-Clustering-Technique" target="_blank" class="text-gray-600 hover:text-gray-800 font-medium flex items-center">
+                                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.165 6.839 9.489.5.092.682-.217.682-.483 0-.237-.008-.867-.013-1.7-2.782.604-3.37-1.341-3.37-1.341-.454-1.15-.111-1.455-.083-1.472.352-.241.026-.236.265-.164.358.291.564.881.765 1.18.0.016.924.321 1.432.234.09-.672.353-1.18.644-1.45-2.69-.305-5.523-1.345-5.523-5.977 0-1.319.467-2.4 1.235-3.243-.123-.306-.535-1.536.117-3.187 0 0 1.008-.323 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.293-1.553 3.3-1.23 3.3-1.23.652 1.651.24 2.881.117 3.187.77.843 1.235 1.924 1.235 3.243 0 4.643-2.837 5.669-5.534 5.97.366.316.68.947.68 1.908 0 1.375-.013 2.479-.013 2.812 0 .268.18.577.688.481C19.136 20.166 22 16.419 22 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2: Social Media Posting Bot -->
+                    <div class="bg-gray-50 rounded-xl shadow-lg overflow-hidden border border-gray-200 transition duration-300 project-card" data-tools="UiPath Studio,Automation Tools,API's">
+                        <!-- Space for the image -->
+                        <img src="Picture2.png" alt="Social Media Posting Bot Thumbnail" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Social Media Posting Bot</h3>
+                            <p class="text-gray-700 mb-4">
+                                Automated Login: Securely logs into Instagram using stored credentials. <br>
+                                Media Uploading: Selects and uploads images or videos from a predefined local directory. <br>
+                                Scheduled Posting: Integrated time-based automation to post content at predefined intervals or specific times of the day. <br>
+                                Post Tracking: Logged successful uploads and failures for monitoring and debugging, enabling future analytics or reporting. <br>
+                                Caption Handling: Reads and inserts captions dynamically from a text source or Excel file. <br>
+                                UI Automation: Uses robust selectors and image recognition to handle dynamic UI changes. <br>
+                                Error Handling: Includes try-catch blocks and logging to handle runtime exceptions gracefully.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">UiPath Studio</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-2.5 py-0.5 rounded-full">Automation Tools</span>
+                                <span class="bg-pink-100 text-pink-800 text-sm font-medium px-2.5 py-0.5 rounded-full">API's</span>
+                            </div>
+                            <div class="flex justify-end space-x-4">
+                                <!-- If you upload a video to YouTube or another platform, replace the '#' with the video URL -->
+                                <a href="1745489885524.mp4" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                                    Watch Demo Video
+                                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                </a>
+                                <a href="https://github.com/VIJAYSANKARA/Social-Media-Posting-Bot-Instagram-" target="_blank" class="text-gray-600 hover:text-gray-800 font-medium flex items-center">
+                                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.165 6.839 9.489.5.092.682-.217.682-.483 0-.237-.008-.867-.013-1.7-2.782.604-3.37-1.341-3.37-1.341-.454-1.15-.111-1.455-.083-1.472.352-.241.026-.236.265-.164.358.291.564.881.765 1.18.0.016.924.321 1.432.234.09-.672.353-1.18.644-1.45-2.69-.305-5.523-1.345-5.523-5.977 0-1.319.467-2.4 1.235-3.243-.123-.306-.535-1.536.117-3.187 0 0 1.008-.323 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.293-1.553 3.3-1.23 3.3-1.23.652 1.651.24 2.881.117 3.187.77.843 1.235 1.924 1.235 3.243 0 4.643-2.837 5.669-5.534 5.97.366.316.68.947.68 1.908 0 1.375-.013 2.479-.013 2.812 0 .268.18.577.688.481C19.136 20.166 22 16.419 22 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Card 3: Digital Clock using Python -->
+                    <div class="bg-gray-50 rounded-xl shadow-lg overflow-hidden border border-gray-200 transition duration-300 project-card" data-tools="Python,Tkinter,Time Module">
+                        <!-- Space for the image -->
+                        <img src="clock.png" alt="Digital Clock Thumbnail" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Digital Clock</h3>
+                            <p class="text-gray-700 mb-4">
+                                🕒 Digital Clock using Python and Tkinter
+                                Developed a Digital Clock application using Python and Tkinter. <br>
+                                Displayed real-time system time in a 12-hour format with AM/PM. <br>
+                                Used the time module for current time retrieval and after() method for periodic updates. <br>
+                                Designed a user-friendly GUI with custom fonts and colors to ensure clarity, responsiveness, and continuous time refresh. <br>
+                                Created a dynamic label that refreshes every 200 milliseconds without freezing the GUI. <br>
+                                Used Tkinter's pack() method to structure widgets neatly in the window. <br>
+                                Built a modular function (get_time()) to allow easy customization or extension of features like stopwatch.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">Python</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-2.5 py-0.5 rounded-full">Tkinter</span>
+                                <span class="bg-pink-100 text-pink-800 text-sm font-medium px-2.5 py-0.5 rounded-full">Time Module</span>
+                            </div>
+                            <div class="flex justify-end space-x-4">
+                                <!-- If you upload a video to YouTube or another platform, replace the '#' with the video URL -->
+                                <a href="Digital Clock.mp4" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                                    Watch Demo Video
+                                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                </a>
+                                <a href="https://github.com/VIJAYSANKARA/Clock-using-Python" target="_blank" class="text-gray-600 hover:text-gray-800 font-medium flex items-center">
+                                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.165 6.839 9.489.5.092.682-.217.682-.483 0-.237-.008-.867-.013-1.7-2.782.604-3.37-1.341-3.37-1.341-.454-1.15-.111-1.455-.083-1.472.352-.241.026-.236.265-.164.358.291.564.881.765 1.18.0.016.924.321 1.432.234.09-.672.353-1.18.644-1.45-2.69-.305-5.523-1.345-5.523-5.977 0-1.319.467-2.4 1.235-3.243-.123-.306-.535-1.536.117-3.187 0 0 1.008-.323 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.293-1.553 3.3-1.23 3.3-1.23.652 1.651.24 2.881.117 3.187.77.843 1.235 1.924 1.235 3.243 0 4.643-2.837 5.669-5.534 5.97.366.316.68.947.68 1.908 0 1.375-.013 2.479-.013 2.812 0 .268.18.577.688.481C19.136 20.166 22 16.419 22 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 4: Tic-Tac-Toe Game using Python -->
+                    <div class="bg-gray-50 rounded-xl shadow-lg overflow-hidden border border-gray-200 transition duration-300 project-card" data-tools="Python">
+                        <!-- Space for the image -->
+                        <img src="tictactoe.png" alt="Tic-Tac-Toe Thumbnail" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Tic-Tac-Toe</h3>
+                            <p class="text-gray-700 mb-4">
+                                ❌⭕ Tic Tac Toe Game using Python<br><br>
+                                Developed a two-player Tic Tac Toe game using Python. <br>
+                                Displayed a 3x3 grid using lists and console output. <br>
+                                Implemented turn-based input handling, win condition checks, and input validation. <br>
+                                Provided real-time game status updates and declared a winner or draw. A simple and interactive text-based game for learning Python logic flow. <br>
+                                Handled repeated inputs by checking for already occupied positions before accepting a move. <br>
+                                Used modular functions (display, check, input) to separate concerns and enhance code readability. <br>
+                                Allowed players to input positions numerically (1–9), mapping to the board accurately. <br>
+                                Optimized the game loop to run for a maximum of 9 moves, preventing unnecessary iterations. <br>
+                                Displayed friendly prompts and error messages to guide users throughout the game. <br>
+                                Prevented overwriting moves by validating that the selected cell is empty before updating the board. <br>
+                                Mapped player inputs (1–9) to the corresponding positions on the 3x3 grid for intuitive gameplay.<br>
+                                Created a scalable base structure suitable for upgrading to GUI-based or AI-integrated versions.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">Python</span>
+                            </div>
+                            <div class="flex justify-end space-x-4">
+                                <!-- If you upload a video to YouTube or another platform, replace the '#' with the video URL -->
+                                <a href="TicTacToe Game.mp4" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                                    Watch Demo Video
+                                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                </a>
+                                <a href="https://github.com/VIJAYSANKARA/TicTacToe-using-Python" target="_blank" class="text-gray-600 hover:text-gray-800 font-medium flex items-center">
+                                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.165 6.839 9.489.5.092.682-.217.682-.483 0-.237-.008-.867-.013-1.7-2.782.604-3.37-1.341-3.37-1.341-.454-1.15-.111-1.455-.083-1.472.352-.241.026-.236.265-.164.358.291.564.881.765 1.18.0.016.924.321 1.432.234.09-.672.353-1.18.644-1.45-2.69-.305-5.523-1.345-5.523-5.977 0-1.319.467-2.4 1.235-3.243-.123-.306-.535-1.536.117-3.187 0 0 1.008-.323 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.293-1.553 3.3-1.23 3.3-1.23.652 1.651.24 2.881.117 3.187.77.843 1.235 1.924 1.235 3.243 0 4.643-2.837 5.669-5.534 5.97.366.316.68.947.68 1.908 0 1.375-.013 2.479-.013 2.812 0 .268.18.577.688.481C19.136 20.166 22 16.419 22 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 5: Snake Game using Python -->
+                    <div class="bg-gray-50 rounded-xl shadow-lg overflow-hidden border border-gray-200 transition duration-300 project-card" data-tools="Python,Tkinter,Random">
+                        <!-- Space for the image -->
+                        <img src="snake game.png" alt="Snake Game Thumbnail" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Snake Game</h3>
+                            <p class="text-gray-700 mb-4">
+                                🐍 Snake Game using Python and Tkinter<br><br>
+                                Developed a classic Snake Game using Python and the Tkinter GUI library. <br>
+                                Created a grid-based canvas for snake and food rendering. <br>
+                                Handled snake movement with arrow key events and implemented collision detection. <br>
+                                Included score tracking and game-over conditions. A fun project demonstrating GUI design and game logic in Python. <br>
+                                Used the after() method to create a smooth game loop and frame refresh rate. <br>
+                                Implemented dynamic food generation using the random module for gameplay variability. <br>
+                                Created a growing snake body logic that follows the head's movement correctly. <br>
+                                Prevented reverse movement (e.g., snake can't go directly from left to right) to maintain logical game mechanics and avoid instant self-collision.<br>
+                                Displayed real-time score updates and final score on game-over screen using canvas text. <br>
+                                Designed the game layout with centered window positioning and consistent tile scaling. <br>
+                                Ensured smooth user experience through responsive key controls and clean visual updates.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">Python</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-2.5 py-0.5 rounded-full">Tkinter</span>
+                                <span class="bg-pink-100 text-pink-800 text-sm font-medium px-2.5 py-0.5 rounded-full">Random Module</span>
+                            </div>
+                            <div class="flex justify-end space-x-4">
+                                <!-- If you upload a video to YouTube or another platform, replace the '#' with the video URL -->
+                                <a href="Snake Game.mp4" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                                    Watch Demo Video
+                                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                </a>
+                                <a href="https://github.com/VIJAYSANKARA/Snake-Game-using-Python" target="_blank" class="text-gray-600 hover:text-gray-800 font-medium flex items-center">
+                                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.165 6.839 9.489.5.092.682-.217.682-.483 0-.237-.008-.867-.013-1.7-2.782.604-3.37-1.341-3.37-1.341-.454-1.15-.111-1.455-.083-1.472.352-.241.026-.236.265-.164.358.291.564.881.765 1.18.0.016.924.321 1.432.234.09-.672.353-1.18.644-1.45-2.69-.305-5.523-1.345-5.523-5.977 0-1.319.467-2.4 1.235-3.243-.123-.306-.535-1.536.117-3.187 0 0 1.008-.323 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.293-1.553 3.3-1.23 3.3-1.23.652 1.651.24 2.881.117 3.187.77.843 1.235 1.924 1.235 3.243 0 4.643-2.837 5.669-5.534 5.97.366.316.68.947.68 1.908 0 1.375-.013 2.479-.013 2.812 0 .268.18.577.688.481C19.136 20.166 22 16.419 22 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 6: Connect 4 Game using Python -->
+                    <div class="bg-gray-50 rounded-xl shadow-lg overflow-hidden border border-gray-200 transition duration-300 project-card" data-tools="Python,Random">
+                        <!-- Space for the image -->
+                        <img src="connect 4 game.webp" alt="Connect 4 Game Thumbnail" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Connect 4 Game</h3>
+                            <p class="text-gray-700 mb-4">
+                                🔴🟡 Connect Four Game using Python (Console-Based) <br><br>
+                                Developed a two-player Connect Four game in Python with console interaction. <br>
+                                Created a 7-column by 6-row grid using nested lists for game state tracking. <br>
+                                Implemented gravity logic for token placement and win condition checks in all directions. <br>
+                                Designed for player vs computer mode with basic AI and real-time game status updates. <br>
+                                Used the random module to simulate valid computer moves for an engaging experience. <br>
+                                Built coordinate parsing logic to convert user input (e.g., "A3") into usable grid positions. <br>
+                                Ensured move validation to prevent illegal placements and respect gravity constraints. <br>
+                                Displayed the board in a visually clear format using formatted console output. <br>
+                                Handled edge cases such as full columns and invalid input with informative messages. <br>
+                                Organized code into modular functions for maintainability and reusability. <br>
+                                Designed game flow to alternate turns and automatically detect game-ending conditions.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">Python</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-2.5 py-0.5 rounded-full">Random (Library)</span>
+                            </div>
+                            <div class="flex justify-end space-x-4">
+                                <!-- If you upload a video to YouTube or another platform, replace the '#' with the video URL -->
+                                <a href="Connect 4 Game.mp4" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                                    Watch Demo Video
+                                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                </a>
+                                <a href="https://github.com/VIJAYSANKARA/Connect4Game-using-Python" target="_blank" class="text-gray-600 hover:text-gray-800 font-medium flex items-center">
+                                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.165 6.839 9.489.5.092.682-.217.682-.483 0-.237-.008-.867-.013-1.7-2.782.604-3.37-1.341-3.37-1.341-.454-1.15-.111-1.455-.083-1.472.352-.241.026-.236.265-.164.358.291.564.881.765 1.18.0.016.924.321 1.432.234.09-.672.353-1.18.644-1.45-2.69-.305-5.523-1.345-5.523-5.977 0-1.319.467-2.4 1.235-3.243-.123-.306-.535-1.536.117-3.187 0 0 1.008-.323 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.293-1.553 3.3-1.23 3.3-1.23.652 1.651.24 2.881.117 3.187.77.843 1.235 1.924 1.235 3.243 0 4.643-2.837 5.669-5.534 5.97.366.316.68.947.68 1.908 0 1.375-.013 2.479-.013 2.812 0 .268.18.577.688.481C19.136 20.166 22 16.419 22 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 7: Calculator -->
+                    <div class="bg-gray-50 rounded-xl shadow-lg overflow-hidden border border-gray-200 transition duration-300 project-card" data-tools="HTML,CSS,JavaScript">
+                        <!-- Space for the image -->
+                        <img src="calculator.png" alt="Calculator Thumbnail" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Calculator</h3>
+                            <p class="text-gray-700 mb-4">
+                                Calculator using HTML, CSS & JavaScript <br>
+                                <br>
+                                Developed a basic calculator web application using HTML, CSS, and JavaScript. <br>
+                                Designed a responsive and visually appealing user interface with styled buttons. <br>
+                                Implemented functionalities for addition, subtraction, multiplication, division, and clear/delete. <br>
+                                Used inline JavaScript to handle real-time input evaluation and display updates. <br>
+                                Created a custom display input field to show user-entered expressions and results. <br>
+                                Styled buttons using modern CSS with shadows, rounded corners, and hover effects. <br>
+                                Ensured mobile responsiveness using flexible layout and viewport scaling. <br>
+                                Handled operator input chaining and prevented syntax errors using condition checks. <br>
+                                Used eval() for expression evaluation with error-free handling of user inputs. <br>
+                                Organized the calculator layout with consistent spacing, alignment, and button grouping. <br>
+                                Tested across different screen sizes and devices to ensure consistent performance.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">HTML</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-2.5 py-0.5 rounded-full">CSS</span>
+                                <span class="bg-pink-100 text-pink-800 text-sm font-medium px-2.5 py-0.5 rounded-full">JavaScript</span>
+                            </div>
+                            <div class="flex justify-end space-x-4">
+                                <!-- If you upload a video to YouTube or another platform, replace the '#' with the video URL -->
+                                <a href="Simple Calculator.mp4" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                                    Watch Demo Video
+                                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                </a>
+                                <a href="https://github.com/VIJAYSANKARA/Calculator-Program" target="_blank" class="text-gray-600 hover:text-gray-800 font-medium flex items-center">
+                                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.165 6.839 9.489.5.092.682-.217.682-.483 0-.237-.008-.867-.013-1.7-2.782.604-3.37-1.341-3.37-1.341-.454-1.15-.111-1.455-.083-1.472.352-.241.026-.236.265-.164.358.291.564.881.765 1.18.0.016.924.321 1.432.234.09-.672.353-1.18.644-1.45-2.69-.305-5.523-1.345-5.523-5.977 0-1.319.467-2.4 1.235-3.243-.123-.306-.535-1.536.117-3.187 0 0 1.008-.323 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.293-1.553 3.3-1.23 3.3-1.23.652 1.651.24 2.881.117 3.187.77.843 1.235 1.924 1.235 3.243 0 4.643-2.837 5.669-5.534 5.97.366.316.68.947.68 1.908 0 1.375-.013 2.479-.013 2.812 0 .268.18.577.688.481C19.136 20.166 22 16.419 22 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 8: E-Commerce App -->
+                    <div class="bg-gray-50 rounded-xl shadow-lg overflow-hidden border border-gray-200 transition duration-300 project-card" data-tools="HTML,CSS,JavaScript,Google Fonts,Font Awesome">
+                        <!-- Space for the image -->
+                        <img src="e-commerce app.jpeg" alt="E-Commerce App Thumbnail" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">E-Commerce App</h3>
+                            <p class="text-gray-700 mb-4">
+                                🛍️ E-Commerce Web App – Red Store using HTML, CSS & JavaScript <br><br>
+                                Developed a fully responsive e-commerce website named Red Store using HTML, CSS, and JavaScript. <br>
+                                Created multiple pages including Home, Products, Product Details, and Cart for smooth user navigation. <br>
+                                Implemented features like product listings, filtering, cart summary, and promotional offers. <br>
+                                Designed a clean UI with brand sections, ratings, and admin-ready layout for future backend integration. <br>
+                                Used CSS Flexbox and Grid for layout structuring and ensured responsiveness across screen sizes. <br>
+                                Added star rating visuals using Font Awesome icons to enhance product presentation. <br>
+                                Created a footer section with quick links, app download buttons, and social media links. <br>
+                                Integrated product price and tax summary in the cart page to simulate checkout flow. <br>
+                                Ensured visual consistency and accessibility through structured typography and color schemes.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">HTML</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-2.5 py-0.5 rounded-full">CSS</span>
+                                <span class="bg-pink-100 text-pink-800 text-sm font-medium px-2.5 py-0.5 rounded-full">JavaScript</span>
+                                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">Google Fonts</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-2.5 py-0.5 rounded-full">Font Awesome</span>
+                            </div>
+                            <div class="flex justify-end space-x-4">
+                                <!-- If you upload a video to YouTube or another platform, replace the '#' with the video URL -->
+                                <a href="E-Commerce App.mp4" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                                    Watch Demo Video
+                                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                </a>
+                                <a href="https://github.com/VIJAYSANKARA/E-Commerce-Program" target="_blank" class="text-gray-600 hover:text-gray-800 font-medium flex items-center">
+                                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.165 6.839 9.489.5.092.682-.217.682-.483 0-.237-.008-.867-.013-1.7-2.782.604-3.37-1.341-3.37-1.341-.454-1.15-.111-1.455-.083-1.472.352-.241.026-.236.265-.164.358.291.564.881.765 1.18.0.016.924.321 1.432.234.09-.672.353-1.18.644-1.45-2.69-.305-5.523-1.345-5.523-5.977 0-1.319.467-2.4 1.235-3.243-.123-.306-.535-1.536.117-3.187 0 0 1.008-.323 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.293-1.553 3.3-1.23 3.3-1.23.652 1.651.24 2.881.117 3.187.77.843 1.235 1.924 1.235 3.243 0 4.643-2.837 5.669-5.534 5.97.366.316.68.947.68 1.908 0 1.375-.013 2.479-.013 2.812 0 .268.18.577.688.481C19.136 20.166 22 16.419 22 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 9: To-Do List -->
+                    <div class="bg-gray-50 rounded-xl shadow-lg overflow-hidden border border-gray-200 transition duration-300 project-card" data-tools="HTML,CSS,JavaScript">
+                        <!-- Space for the image -->
+                        <img src="to-do list.jpg" alt="To-Do List Thumbnail" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">To-Do List</h3>
+                            <p class="text-gray-700 mb-4">
+                                ✅ To-Do List Web App using HTML, CSS & JavaScript <br><br>
+                                Developed a simple and interactive To-Do List application using HTML, CSS, and JavaScript. <br>
+                                Designed a centered and responsive layout for task management with clean UI styling. <br>
+                                Implemented features to add, edit, and delete tasks dynamically with timestamps. <br>
+                                Used JavaScript for DOM manipulation and inline editing to enhance user experience. <br>
+                                Each task entry includes the exact date and time of creation for better organization. <br>
+                                Styled buttons with hover effects and used flexbox for clean alignment of task elements. <br>
+                                Created a scalable structure that can be extended with features like local storage or task filtering. <br>
+                                Ensured a minimalistic and intuitive user experience across different screen sizes. <br>
+                                Integrated contenteditable elements to allow users to edit tasks directly within the list without pop-ups or forms, enhancing usability and streamlining task updates. <br>
+                                Enabled task persistence logic structure, allowing easy future integration with local storage or database for saving tasks across sessions.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">HTML</span>
+                                <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-2.5 py-0.5 rounded-full">CSS</span>
+                                <span class="bg-pink-100 text-pink-800 text-sm font-medium px-2.5 py-0.5 rounded-full">JavaScript</span>
+                            </div>
+                            <div class="flex justify-end space-x-4">
+                                <!-- If you upload a video to YouTube or another platform, replace the '#' with the video URL -->
+                                <a href="To-Do List.mp4" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                                    Watch Demo Video
+                                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                </a>
+                                <a href="https://github.com/VIJAYSANKARA/To-Do-List-" target="_blank" class="text-gray-600 hover:text-gray-800 font-medium flex items-center">
+                                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.165 6.839 9.489.5.092.682-.217.682-.483 0-.237-.008-.867-.013-1.7-2.782.604-3.37-1.341-3.37-1.341-.454-1.15-.111-1.455-.083-1.472.352-.241.026-.236.265-.164.358.291.564.881.765 1.18.0.016.924.321 1.432.234.09-.672.353-1.18.644-1.45-2.69-.305-5.523-1.345-5.523-5.977 0-1.319.467-2.4 1.235-3.243-.123-.306-.535-1.536.117-3.187 0 0 1.008-.323 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.293-1.553 3.3-1.23 3.3-1.23.652 1.651.24 2.881.117 3.187.77.843 1.235 1.924 1.235 3.243 0 4.643-2.837 5.669-5.534 5.97.366.316.68.947.68 1.908 0 1.375-.013 2.479-.013 2.812 0 .268.18.577.688.481C19.136 20.166 22 16.419 22 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 bg-gray-100 rounded-lg m-4 p-8 shadow-md">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">Get in Touch</h2>
+                <div class="max-w-xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                    <p class="text-center text-gray-700 text-lg mb-8">
+                        I'm always open to new opportunities and collaborations. Feel free to reach out!
+                    </p>
+                    <form id="contact-form" action="https://formspree.io/f/mnnvpnpa" method="POST" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 text-sm font-semibold mb-2">Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200" placeholder="Your Name" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 text-sm font-semibold mb-2">Email</label>
+                            <input type="email" id="email" name="_replyto" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200" placeholder="your.email@example.com" required>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 text-sm font-semibold mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200" placeholder="Your message..." required></textarea>
+                        </div>
+                        <button type="submit" id="submit-button" class="w-full bg-indigo-600 text-white font-semibold py-3 px-6 rounded-md shadow-md hover:bg-indigo-700 transition duration-300 btn-primary">
+                            Send Message
+                        </button>
+                    </form>
+                    <!-- Message display area -->
+                    <div id="form-message" class="mt-4 text-center text-sm font-medium hidden"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-4 rounded-t-lg">
+        <div class="container mx-auto text-center px-4">
+            <p class="mb-4 text-lg">&copy; 2025 Vijay.S. All rights reserved.</p>
+            <div class="flex justify-center space-x-6">
+                <!-- LinkedIn Icon -->
+                <a href="https://www.linkedin.com/in/sankaranarayanan-vijay-524330256/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+                </a>
+                <!-- GitHub Icon -->
+                <a href="https://github.com/VIJAYSANKARA" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.165 6.839 9.489.5.092.682-.217.682-.483 0-.237-.008-.867-.013-1.7-2.782.604-3.37-1.341-3.37-1.341-.454-1.15-.111-1.455-.083-1.472.352-.241.026-.236.265-.164.358.291.564.881.765 1.18.0.016.924.321 1.432.234.09-.672.353-1.18.644-1.45-2.69-.305-5.523-1.345-5.523-5.977 0-1.319.467-2.4 1.235-3.243-.123-.306-.535-1.536.117-3.187 0 0 1.008-.323 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.293-1.553 3.3-1.23 3.3-1.23.652 1.651.24 2.881.117 3.187.77.843 1.235 1.924 1.235 3.243 0 4.643-2.837 5.669-5.534 5.97.366.316.68.947.68 1.908 0 1.375-.013 2.479-.013 2.812 0 .268.18.577.688.481C19.136 20.166 22 16.419 22 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                </a>
+                <!-- Instagram Icon -->
+                <a href="https://www.instagram.com/_vijay_291204/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12 0C8.74 0 8.333.014 7.053.072 5.775.132 4.935.253 4.09.52C3.251.785 2.51 1.183 1.879 1.812S.785 3.25.519 4.09C.252 4.935.131 5.775.072 7.053.014 8.333 0 8.74 0 12s.014 3.667.072 4.947c.06 1.277.181 2.116.45 2.955.265.84.663 1.579 1.292 2.21S3.25 23.215 4.09 23.48c.84.267 1.679.387 2.955.447C8.333 23.986 8.74 24 12 24s3.667-.014 4.947-.072c1.277-.06 2.116-.181 2.955-.45.84-.265 1.579-.663 2.21-1.292s1.027-1.292 1.292-2.21c.267-.84.387-1.679.447-2.955.058-1.28.072-1.687.072-4.947s-.014-3.667-.072-4.947c-.06-1.277-.181-2.116-.45-2.955-.265-.84-.663-1.579-1.292-2.21S20.75 0.785 19.91 0.519C19.07 0.252 18.23 0.131 16.953.072 15.673.014 15.26 0 12 0zm0 2.163c3.228 0 3.585.016 4.85.071 1.17.055 1.815.183 2.224.346.6.242 1.099.563 1.595 1.058s.817.995 1.058 1.595c.163.409.291 1.054.346 2.224.056 1.265.07 1.622.07 4.85s-.014 3.585-.07 4.85c-.055 1.17-.183 1.815-.346 2.224-.242.6-.563 1.099-1.058 1.595s-.995.817-1.595 1.058c-.409.163-1.054.291-2.224.346-1.265.056-1.622.07-4.85.07s-3.585-.014-4.85-.07c-1.17-.055-1.815-.183-2.224-.346-.6-.242-1.099-.563-1.595-1.058s-.817-.995-1.058-1.595c-.163-.409-.291-1.054-.346-2.224-.056-1.265-.07-1.622-.07-4.85s.014-3.585.07-4.85c.055-1.17.183-1.815.346-2.224.242-.6.563-1.099 1.058-1.595s.995-.817 1.595-1.058c.409-.163 1.054-.291 2.224-.346C8.415 2.179 8.772 2.163 12 2.163zM12 6a6 6 0 100 12 6 6 0 000-12zm0 10.598A4.598 4.598 0 1116.598 12 4.598 4.598 0 0112 16.598zm4-10.428A1.428 1.428 0 1113.844 5.172 1.428 1.428 0 0116 6.172z" clip-rule="evenodd"></path></svg>
+                </a>
+                <!-- LeetCode Icon -->
+                <a href="https://leetcode.com/u/Vijay_S_2004/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13.623 4.295c.57.173.947.72.947 1.345v13.06c0 .625-.377 1.172-.947 1.345l-3.328 1.011c-1.24.376-2.528-.43-2.904-1.67L5.567 12l-1.92-6.275c-.376-1.24.43-2.528 1.67-2.904l3.328-1.011c.625-.19.947-.72.947-1.345V0h3.328v4.295zM12 1.666c-.615 0-1.114.498-1.114 1.114V4.7c0 .615.498 1.114 1.114 1.114h1.904c.615 0 1.114-.498 1.114-1.114V2.78c0-.615-.498-1.114-1.114-1.114H12zm-2.857 7.143c-.456-.23-.974-.325-1.49-.296-.516.029-1.017.18-1.464.444-.447.264-.836.634-1.157 1.077-.321.444-.56.946-.69 1.485-.13.539-.158 1.107-.083 1.673.076.566.273 1.107.578 1.583.305.476.702.883 1.168 1.198.466.315.99.52 1.528.618.538.098 1.085.08 1.616-.048.531-.128 1.03-.418 1.472-.85.442-.432.812-.977 1.081-1.583.269-.606.425-1.27.458-1.942.033-.672-.05-1.339-.247-1.97-.197-.631-.508-1.218-.915-1.72-.407-.503-.902-.926-1.45-1.246zM15.428 12c.706 0 1.28-.574 1.28-1.28V4.7c0-.706-.574-1.28-1.28-1.28h-1.904c-.706 0-1.28.574-1.28 1.28v6.02c0 .706.574 1.28 1.28 1.28h1.904zM16.892 12c-.447-.264-.836-.634-1.157-1.077-.321-.444-.56-.946-.69-1.485-.13-.539-.158 1.107-.083-1.673.076.566.273 1.107.578 1.583.305.476.702.883 1.168 1.198.466.315.99.52 1.528.618.538.098 1.085.08 1.616-.048.531-.128 1.03-.418 1.472-.85.442-.432.812-.977 1.081-1.583.269-.606.425-1.27.458-1.942.033-.672-.05-1.339-.247-1.97-.197-.631-.508-1.218-.915-1.72-.407-.503-.902-.926-1.45-1.246zM15.428 19.334c-.706 0-1.28-.574-1.28-1.28v-6.02c0-.706.574-1.28 1.28-1.28h1.904c.706 0 1.28.574 1.28 1.28v6.02c0 .706-.574 1.28-1.28 1.28h-1.904z"/></svg>
+                </a>
+                <!-- HackerRank Icon -->
+                <a href="https://www.hackerrank.com/profile/Vijay_2004" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-2 18H8V6h2v12zm4 0h-2V6h2v12zm4-4h-2V6h2v8z"/></svg>
+                </a>
+                <!-- Gmail Icon -->
+                <a href="mailto:svijay.sankara@gmail.com" class="text-gray-400 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle logic
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function openMobileMenu() {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('flex');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        mobileMenuButton.addEventListener('click', openMobileMenu);
+        closeMenuButton.addEventListener('click', closeMobileMenu);
+
+        // Close mobile menu when a navigation link is clicked
+        mobileMenu.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // --- JAVASCRIPT FOR CONTACT FORM SUBMISSION ---
+        const contactForm = document.getElementById('contact-form');
+        const formMessage = document.getElementById('form-message');
+        const submitButton = document.getElementById('submit-button');
+
+        contactForm.addEventListener('submit', async function (e) {
+            e.preventDefault(); // Prevent default browser submission (redirect)
+
+            const formURL = contactForm.action;
+            const formData = new FormData(contactForm);
+
+            // Display loading state
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+            formMessage.classList.add('hidden'); // Hide previous message
+
+            try {
+                const response = await fetch(formURL, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json' // Essential for Formspree to return JSON
+                    }
+                });
+
+                if (response.ok) { // Check if response status is 2xx
+                    formMessage.textContent = 'Message sent successfully! Thank you for reaching out.';
+                    formMessage.className = 'mt-4 text-center text-sm font-medium form-message-success'; // Add success styling
+                    contactForm.reset(); // Clear the form fields
+                } else {
+                    // Handle non-2xx responses (e.g., Formspree validation errors)
+                    const data = await response.json();
+                    if (data.errors) {
+                        formMessage.textContent = data.errors.map(error => error.message).join(', ');
+                    } else {
+                        formMessage.textContent = 'Oops! There was a problem sending your message. Please try again.';
+                    }
+                    formMessage.className = 'mt-4 text-center text-sm font-medium form-message-error'; // Add error styling
+                }
+            } catch (error) {
+                console.error('Network error or server unavailable:', error);
+                formMessage.textContent = 'Network error or server unavailable. Please check your connection and try again.';
+                formMessage.className = 'mt-4 text-center text-sm font-medium form-message-error'; // Add error styling
+            } finally {
+                submitButton.disabled = false; // Re-enable button
+                submitButton.textContent = 'Send Message'; // Restore button text
+                formMessage.classList.remove('hidden'); // Show message
+            }
+        });
+
+        // --- JAVASCRIPT FOR PROJECT FILTERING ---
+        const toolFilter = document.getElementById('tool-filter');
+        const projectsGrid = document.getElementById('projects-grid');
+        const projectCards = projectsGrid.querySelectorAll('.project-card');
+
+        toolFilter.addEventListener('change', function() {
+            const selectedTool = this.value; // Get the selected tool from the dropdown
+
+            projectCards.forEach(card => {
+                const toolsUsed = card.dataset.tools; // Get the comma-separated tools from data-tools attribute
+                const toolsArray = toolsUsed ? toolsUsed.split(',').map(tool => tool.trim()) : [];
+
+                if (selectedTool === 'all' || toolsArray.includes(selectedTool)) {
+                    card.style.display = 'block'; // Show the card
+                } else {
+                    card.style.display = 'none'; // Hide the card
+                }
+            });
+        });
+
+
+        // Simple animations on scroll (optional, for more advanced use intersection observer)
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-fade-in-down, .animate-fade-in-up');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                } else {
+                    el.style.opacity = '0';
+                    if (el.classList.contains('animate-fade-in-down')) {
+                        el.style.transform = 'translateY(-20px)';
+                    } else if (el.classList.contains('animate-fade-in-up')) {
+                        el.style.transform = 'translateY(20px)';
+                    }
+                }
+            });
+        };
+
+        // Initialize and add event listener
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll); // Check on load too
+    </script>
+</body>
+</html>
